@@ -3,9 +3,14 @@
 import sys
 
 def making_change(amount, denominations):
-  # Your code here
-
-  pass
+  combos = [0] * (amount + 1)
+  combos[0] = 1
+  # going through denominations:
+  for i in range(len(denominations)):
+    for j in range(len(combos)):
+      if denominations[i] <= j:
+        combos[j] += combos[(j - denominations[i])]#update
+  return combos[amount]
 
 
 if __name__ == "__main__":
